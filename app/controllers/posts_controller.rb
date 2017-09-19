@@ -9,13 +9,13 @@ def create
   @post = Post.new(post_params)
   @post.user = current_user
   @post.save
-  redirect_to posts_path
+  
 end
 
 def destroy
   @post = current_user.posts.find(params[:id])  # 只能删除自己所属的post
   @post.destroy
-  
+
 end
 
 protected
