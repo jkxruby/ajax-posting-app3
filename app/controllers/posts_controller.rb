@@ -15,6 +15,7 @@ end
 def destroy
   @post = current_user.posts.find(params[:id])  # 只能删除自己所属的post
   @post.destroy
+  
 end
 
 protected
