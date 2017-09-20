@@ -23,15 +23,15 @@ def like
   unless @post.find_like(current_user) #如果已经赞过了，就略过不再新增
     Like.create(:user => current_user, :post => @post)
   end
-  redirect_to posts_path
+
 end
 
 def unlike
   @post = Post.find(params[:id])
   like = @post.find_like(current_user)
   like.destroy
-  redirect_to posts_path
-end 
+  render "like"
+end
 
 
 protected
