@@ -17,6 +17,13 @@ class PostsController < ApplicationController
     @post.save
   end
 
+  def update
+    @post = Post.find(params[:id])
+    @post.update!(post_params)
+
+    render :json => { :id => @post.id, :message => "ok"}
+  end
+
   def destroy
     @post = current_user.posts.find(params[:id]) # 只能删除自己所属的post
     @post.destroy
@@ -54,6 +61,6 @@ class PostsController < ApplicationController
   protected
 
   def post_params
-    params.require(:post).permit(:content)
+    params.require(:post).permit(:content, :category_id)
   end
 end
