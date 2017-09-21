@@ -18,10 +18,11 @@ class PostsController < ApplicationController
   end
 
   def update
+    sleep(0.5)
     @post = Post.find(params[:id])
     @post.update!(post_params)
 
-    render :json => { :id => @post.id, :message => "ok"}
+    render json: { id: @post.id, message: 'ok' }
   end
 
   def destroy
