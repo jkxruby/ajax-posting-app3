@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
  has_many :posts
 
- has_many :likes, :dependent => :destroy 
+ has_many :likes, :dependent => :destroy
  has_many :liked_posts, :through => :likes, :source => :post
 
  def display_name
@@ -16,5 +16,9 @@ class User < ApplicationRecord
  def find_like
    self.likes.where(:user_id => user.id ).first
  end
+
+ def is_admin?
+   role == "admin"
+ end 
 
 end
